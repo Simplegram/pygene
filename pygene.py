@@ -171,7 +171,6 @@ def change_tab(value):
 with gr.Blocks() as ui:
     gr.Markdown("""
         # Bioinformatics Search Engine
-        ### Dibuat oleh Kelompok 12
     """)
     with gr.Tabs() as tabs:
         with gr.TabItem(label="Genbank Search"):
@@ -190,6 +189,8 @@ with gr.Blocks() as ui:
             with gr.Tab(label="Genbank Detail Search"):
                 with gr.Row():
                     query = gr.Textbox(label="Search query", placeholder="enter Genbank id here, ex: OQ180929.1")
+                with gr.Row():        
+                    genbank_btn = gr.Button("Find sequence")
                 with gr.Row():
                     gr.Markdown("""
                         ## Search result
@@ -201,12 +202,7 @@ with gr.Blocks() as ui:
                     seq_desc = gr.Textbox(label="Sequence description")
                 with gr.Row():
                     seq = gr.Textbox(label="Sequence").style(show_copy_button=True)
-                # with gr.Row():
-                #     openedai = gr.Textbox(label="AI analysis")    
-                with gr.Row():        
-                    genbank_btn = gr.Button("Find sequence")
-                    # find_button.click(fn=getDNA, inputs=[query], outputs=[seq_id, seq_desc, seq_len, seq, openedai])
-                    genbank_btn.click(fn=getDNA, inputs=query, outputs=[seq_id, seq_desc, seq_len, seq])
+                genbank_btn.click(fn=getDNA, inputs=query, outputs=[seq_id, seq_desc, seq_len, seq])
         with gr.TabItem(label="PDB Search"):
             with gr.Tabs() as pdb_s:
                 with gr.TabItem(label="PDB ID Search", id=1):
@@ -240,19 +236,19 @@ with gr.Blocks() as ui:
                         err_out = gr.Textbox(show_label=False).style(container=False)
                     with gr.Row():
                         pdb_btn = gr.Button("View structure")
-                        pdb_btn.click(fn=update, inputs=query_d, outputs=[mol, err_out])    
+                    pdb_btn.click(fn=update, inputs=query_d, outputs=[mol, err_out])    
                 model_button.click(change_tab, pdb_dropdown, [pdb_s, query_d])
     with gr.Row():
-        # resources = gr.TextArea(value=resources_list)
         resources = gr.Markdown("""
+#### [Github page](https://github.com/Simplegram/pygene)
 ### Resources and guides used
 - [PyPDB](https://github.com/williamgilpin/pypdb)
 - [NCBI](https://www.ncbi.nlm.nih.gov/nuccore/)
 - [RSCB](https://www.rcsb.org/)
-- [Visualize proteins on Hugging Face Spaces](https://huggingface.co/blog/spaces_3dmoljs)
 - [3dmol.js](https://3dmol.org/doc/global.html)
 - [Biopython](https://biopython.org/docs)
 - [Gradio WebUI](https://gradio.app/docs)
+- [Visualize proteins on Hugging Face Spaces - Simon Duerr](https://huggingface.co/blog/spaces_3dmoljs)
         """)
 
 ui.launch(server_name="0.0.0.0", server_port=7870)
