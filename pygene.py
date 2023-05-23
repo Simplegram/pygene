@@ -168,7 +168,7 @@ def get_all_seq(query):
 def change_tab(value):
     return gr.Tabs.update(selected=2), gr.Textbox.update(value=value)
 
-with gr.Blocks() as ui:
+with gr.Blocks(title="pygene") as ui:
     gr.Markdown("""
         # Bioinformatics Search Engine
     """)
