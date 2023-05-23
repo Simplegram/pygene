@@ -16,6 +16,8 @@ Run with
 python pygene.py
 ```
 
+All PDB files are saved to `pdbs` folder. Create one in the root directory.
+
 ## Resources and guides used
 - [PyPDB](https://github.com/williamgilpin/pypdb)
 - [NCBI](https://www.ncbi.nlm.nih.gov/nuccore/)
