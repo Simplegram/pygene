@@ -1,7 +1,7 @@
 # pygene
 A simple Gradio WebUI to find details about a gene and its 3D visualization using Python
 
-Tested using Windows 11. I'm not a Python pro and there should be a lot of bugs in the program. A bug report and a fix is appreaciated!
+Tested using Windows 11. I'm not a Python pro and there will be a lot of bugs in the program. A bug report and a fix is appreaciated!
 
 ## Requirements
 - Conda (optional, recommended)
