@@ -10,18 +10,11 @@ Tested using Windows 11. I'm not a Python pro and there will be a lot of bugs in
 - PyPDB
 - wget
 
-## Setup Conda Environment
+## Setup
 ```
 conda create --name pygene
-```
-
-## Clone Repo
-```
 git clone https://github.com/Simplegram/pygene.git
-```
-
-## Install Requirements
-```
+cd pygene
 pip install -r requirements
 ```
 
