@@ -15,6 +15,11 @@ Tested using Windows 11. I'm not a Python pro and there will be a lot of bugs in
 conda create --name pygene
 ```
 
+## Clone Repo
+```
+git clone https://github.com/Simplegram/pygene.git
+```
+
 ## Install Requirements
 ```
 pip install -r requirements
