@@ -16,7 +16,7 @@ Tested using Windows 11. I'm not a Python pro and there will be a lot of bugs in
 conda create --name pygene
 ```
 
-### Clone pygene Repo and move to the folder
+### Clone pygene repo and move to the folder
 ```
 git clone https://github.com/Simplegram/pygene.git
 cd pygene
