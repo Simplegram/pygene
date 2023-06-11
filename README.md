@@ -11,7 +11,7 @@ Tested using Windows 11. I'm not a Python pro and there will be a lot of bugs in
 - wget
 
 ## Setup
-```
+```python
 conda create --name pygene #optional
 git clone https://github.com/Simplegram/pygene.git
 cd pygene
