@@ -11,10 +11,19 @@ Tested using Windows 11. I'm not a Python pro and there will be a lot of bugs in
 - wget
 
 ## Setup
-```python
-conda create --name pygene #optional
+### Create Conda Environment (Optional)
+```
+conda create --name pygene
+```
+
+### Clone pygene Repo and move to the folder
+```
 git clone https://github.com/Simplegram/pygene.git
 cd pygene
+```
+
+### Install Requirements
+```
 pip install -r requirements
 ```
 
