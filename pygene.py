@@ -2,6 +2,7 @@ import gradio as gr
 
 import modules.genbank as genbank
 import modules.pdb as pdb
+import modules.fasta as fasta
 
 with gr.Blocks(title="pygene") as ui:
     gr.Markdown("""
@@ -80,6 +81,27 @@ with gr.Blocks(title="pygene") as ui:
                         pdb_btn = gr.Button("View structure")
                     pdb_btn.click(fn=pdb.update, inputs=query_d, outputs=[mol, err_out])    
                 model_button.click(pdb.change_pdb3d, pdb_dropdown, [pdb_s, query_d])
+        with gr.TabItem(label="File Analysis"):
+            with gr.Tabs() as file_ly:
+                with gr.TabItem(label="FASTA Analysis", id=1):
+                    with gr.Row():
+                        with gr.Column():
+                            with gr.Row():
+                                fasta_file = gr.File(file_types=[".fasta"])
+                            with gr.Row():
+                                fasta_button = gr.Button("Analyze").style(full_width=True)
+                        with gr.Column():
+                            fasta_gc_percent = gr.Textbox(label="GC Content Percentage")
+                            fasta_at_percent = gr.Textbox(label="AT Content Percentage")
+                            fasta_mt = gr.Textbox(label="Melting Temperature (Wallace Method)")
+                            fasta_weight = gr.Textbox(label="Molecular Weight")
+                    with gr.Row():
+                        fasta_seq = gr.Textbox(label="Sequence").style(show_copy_button=True)
+                    with gr.Row():
+                        fasta_mrna = gr.Textbox(label="Transcribed mRNA").style(show_copy_button=True)
+                        with gr.Column():
+                            fasta_protein_3l = gr.Textbox(label="Translated Protein (3-letter code)").style(show_copy_button=True)
+                    fasta_button.click(fn=fasta.get_fasta_data, inputs=fasta_file, outputs=[fasta_seq, fasta_mrna, fasta_protein_3l, fasta_gc_percent, fasta_at_percent, fasta_mt, fasta_weight])
     with gr.Row():
         resources = gr.Markdown("""
 #### [Github page](https://github.com/Simplegram/pygene)
@@ -93,4 +115,4 @@ with gr.Blocks(title="pygene") as ui:
 - [Visualize proteins on Hugging Face Spaces - Simon Duerr](https://huggingface.co/blog/spaces_3dmoljs)
         """)
 
-ui.launch(server_name="0.0.0.0", server_port=7872)
+ui.launch(server_name="0.0.0.0", server_port=7870)
